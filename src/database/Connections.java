@@ -15,7 +15,7 @@ public class Connections {
             final String driver = "com.mysql.jdbc.Driver";
             final String server = "jdbc:mysql://localhost:3306/game";
             final String user = "root";
-            final String pass = "123456";
+            final String pass = "tien99bnhl";
             Class.forName(driver);
             connection = DriverManager.getConnection(server, user, pass);
             if (connection == null) {

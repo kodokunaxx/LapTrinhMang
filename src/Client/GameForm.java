@@ -22,13 +22,14 @@ import javax.swing.JOptionPane;
  * @author admin
  */
 public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
+
     static ListenServer listenServer = null;
     DefaultListModel<String> model = new DefaultListModel<>();
     ArrayList<Question> questions;
     static Game game;
     static Game game2;
     static int dem = 0;
-    
+
     public GameForm(ListenServer listenServer) {
         initComponents();
         setLocationRelativeTo(null);
@@ -41,8 +42,7 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
             Logger.getLogger(PlayForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -310,14 +310,24 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        if(cbAns1.getSelectedIndex() == questions.get(0).getCorrectAnswer()) dem++;
-        if(cbAns2.getSelectedIndex() == questions.get(1).getCorrectAnswer()) dem++;
-        if(cbAns3.getSelectedIndex() == questions.get(2).getCorrectAnswer()) dem++;
-        if(cbAns4.getSelectedIndex() == questions.get(3).getCorrectAnswer()) dem++;
-        if(cbAns5.getSelectedIndex() == questions.get(4).getCorrectAnswer()) dem++;
-        
+        if (cbAns1.getSelectedIndex() == questions.get(0).getCorrectAnswer()) {
+            dem++;
+        }
+        if (cbAns2.getSelectedIndex() == questions.get(1).getCorrectAnswer()) {
+            dem++;
+        }
+        if (cbAns3.getSelectedIndex() == questions.get(2).getCorrectAnswer()) {
+            dem++;
+        }
+        if (cbAns4.getSelectedIndex() == questions.get(3).getCorrectAnswer()) {
+            dem++;
+        }
+        if (cbAns5.getSelectedIndex() == questions.get(4).getCorrectAnswer()) {
+            dem++;
+        }
+
         LocalTime time = java.time.LocalTime.now();
-            result(dem, time);
+        result(dem, time);
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
@@ -384,7 +394,7 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
     private javax.swing.JLabel lbQues4;
     private javax.swing.JLabel lbQues5;
     // End of variables declaration//GEN-END:variables
-    
+
     @Override
     public void ReceiveMessage(KMessage msg) throws IOException {
         switch (msg.getType()) {
@@ -453,6 +463,7 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
             }
         }
     }
+
     private void setQuestion() {
         //lấy câu hỏi
         lbQues1.setText(questions.get(0).getQuestion());
@@ -460,33 +471,42 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
         lbQues3.setText(questions.get(2).getQuestion());
         lbQues4.setText(questions.get(3).getQuestion());
         lbQues5.setText(questions.get(4).getQuestion());
+      
+         cbAns1.removeAllItems();
+          cbAns2.removeAllItems();
+          cbAns3.removeAllItems();
+          cbAns4.removeAllItems();
+          cbAns5.removeAllItems();
+       
         //lấy đáp án
         cbAns1.addItem(questions.get(0).getAnswerA());
         cbAns1.addItem(questions.get(0).getAnswerB());
         cbAns1.addItem(questions.get(0).getAnswerC());
         cbAns1.addItem(questions.get(0).getAnswerD());
-        
+
         cbAns2.addItem(questions.get(1).getAnswerA());
         cbAns2.addItem(questions.get(1).getAnswerB());
         cbAns2.addItem(questions.get(1).getAnswerC());
         cbAns2.addItem(questions.get(1).getAnswerD());
-        
+
         cbAns3.addItem(questions.get(2).getAnswerA());
         cbAns3.addItem(questions.get(2).getAnswerB());
         cbAns3.addItem(questions.get(2).getAnswerC());
         cbAns3.addItem(questions.get(2).getAnswerD());
-        
+
         cbAns4.addItem(questions.get(3).getAnswerA());
         cbAns4.addItem(questions.get(3).getAnswerB());
         cbAns4.addItem(questions.get(3).getAnswerC());
         cbAns4.addItem(questions.get(3).getAnswerD());
-        
+
         cbAns5.addItem(questions.get(4).getAnswerA());
         cbAns5.addItem(questions.get(4).getAnswerB());
         cbAns5.addItem(questions.get(4).getAnswerC());
         cbAns5.addItem(questions.get(4).getAnswerD());
-        
+
+         
     }
+
     private void result(int dem, LocalTime time) {
         jLabel1.setText("Số câu đúng: " + dem);
         game = new Game(dem, time, user);
