@@ -137,7 +137,7 @@ public class LoginForm extends javax.swing.JFrame implements inReceiveMessage{
 //    }
     void connectServer()
     {
-        IP = "127.0.0.1";
+        IP = "10.147.19.251";
         Port = "24398";
         
         try {
