@@ -508,7 +508,7 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
     }
 
     private void result(int dem, LocalTime time) {
-        jLabel1.setText("Số câu đúng: " + dem);
+        //jLabel1.setText("Số câu đúng: " + dem);
         game = new Game(dem, time, user);
         try {
             listenServer.SendMessage(50, game);

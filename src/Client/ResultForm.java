@@ -6,9 +6,8 @@
 package Client;
 
 import static Client.HomeForm.object;
-import static Client.PlayForm.dem;
-import static Client.PlayForm.game;
-import static Client.PlayForm.index;
+import static Client.GameForm.dem;
+import static Client.GameForm.game;
 import Model.Game;
 import Model.KMessage;
 import Server.Main;
@@ -31,7 +30,6 @@ public class ResultForm extends javax.swing.JFrame implements inReceiveMessage {
         jLabel4.setText("Người chơi: " + game2.getUser().getUserName());
         jLabel6.setText("Số câu đúng: " + game2.getCount());
         jLabel5.setText("Thời gian hoàn thành: " + game2.getTime());
-        index = 0;
         dem = 0;
         Main.Diem = 0;
     }
@@ -233,8 +231,8 @@ public class ResultForm extends javax.swing.JFrame implements inReceiveMessage {
                 if (dialogResult == 0) {
                     // Vào phòng và gửi thông báo vào phòng cho người kia
                     listenServer.SendMessage(31, null);
-                    PlayForm playForm = new PlayForm(listenServer);// mở phòng
-                    playForm.setVisible(true);
+                    GameForm gameForm = new GameForm(listenServer);// mở phòng
+                    gameForm.setVisible(true);
                     this.setVisible(false);
                 } else {
                     listenServer.SendMessage(32, null);// gửi thông báo không chấp nhận
@@ -242,8 +240,8 @@ public class ResultForm extends javax.swing.JFrame implements inReceiveMessage {
                 break;
             }
             case 33: {
-                PlayForm playForm = new PlayForm(listenServer);// mở phòng
-                playForm.setVisible(true);
+                GameForm gameForm = new GameForm(listenServer);// mở phòng
+                gameForm.setVisible(true);
                 this.setVisible(false);
                 break;
             }
