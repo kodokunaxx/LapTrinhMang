@@ -264,8 +264,8 @@ public class HomeForm extends javax.swing.JFrame implements inReceiveMessage {
                 if (dialogResult == 0) {
                     // Vào phòng và gửi thông báo vào phòng cho người kia
                     listenServer.SendMessage(31, null);
-                    PlayForm playForm = new PlayForm(listenServer);// mở phòng
-                    playForm.setVisible(true);
+                    GameForm gameForm = new GameForm(listenServer);// mở phòng
+                    gameForm.setVisible(true);
                     this.setVisible(false);
                 } else {
                     listenServer.SendMessage(32, null);// gửi thông báo không chấp nhận
@@ -274,8 +274,8 @@ public class HomeForm extends javax.swing.JFrame implements inReceiveMessage {
             }
             // Nhận thông báo chấp nhận vào phòng từ người kia
             case 33: {
-                PlayForm playForm = new PlayForm(listenServer);// mở phòng
-                playForm.setVisible(true);
+                GameForm gameForm = new GameForm(listenServer);// mở phòng
+                gameForm.setVisible(true);
                 this.setVisible(false);
                 break;
             }

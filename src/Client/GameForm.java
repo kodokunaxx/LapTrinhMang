@@ -5,14 +5,17 @@
  */
 package Client;
 
+import static Client.LoginForm.user;
 import Model.Game;
 import Model.KMessage;
 import Model.Question;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +27,8 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
     ArrayList<Question> questions;
     static Game game;
     static Game game2;
+    static int dem = 0;
+    
     public GameForm(ListenServer listenServer) {
         initComponents();
         setLocationRelativeTo(null);
@@ -97,6 +102,11 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         lbQues2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbQues2.setText("jLabel6");
@@ -111,19 +121,39 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
         lbQues5.setText("jLabel6");
 
         cbAns1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbAns1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAns1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAns1ActionPerformed(evt);
+            }
+        });
 
         cbAns2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbAns2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAns2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAns2ActionPerformed(evt);
+            }
+        });
 
         cbAns3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbAns3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAns3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAns3ActionPerformed(evt);
+            }
+        });
 
         cbAns4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbAns4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAns4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAns4ActionPerformed(evt);
+            }
+        });
 
         cbAns5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbAns5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAns5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAns5ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel6.setText("ĐÁP ÁN: ");
@@ -258,6 +288,38 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbAns1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAns1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbAns1ActionPerformed
+
+    private void cbAns2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAns2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbAns2ActionPerformed
+
+    private void cbAns3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAns3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbAns3ActionPerformed
+
+    private void cbAns4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAns4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbAns4ActionPerformed
+
+    private void cbAns5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAns5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbAns5ActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        if(cbAns1.getSelectedIndex() == questions.get(0).getCorrectAnswer()) dem++;
+        if(cbAns2.getSelectedIndex() == questions.get(1).getCorrectAnswer()) dem++;
+        if(cbAns3.getSelectedIndex() == questions.get(2).getCorrectAnswer()) dem++;
+        if(cbAns4.getSelectedIndex() == questions.get(3).getCorrectAnswer()) dem++;
+        if(cbAns5.getSelectedIndex() == questions.get(4).getCorrectAnswer()) dem++;
+        
+        LocalTime time = java.time.LocalTime.now();
+            result(dem, time);
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,12 +384,116 @@ public class GameForm extends javax.swing.JFrame implements inReceiveMessage {
     private javax.swing.JLabel lbQues4;
     private javax.swing.JLabel lbQues5;
     // End of variables declaration//GEN-END:variables
-    private void setQuestion(Question get) {
-        lbQues1.setText(get.getQuestion());
-    }
-
+    
     @Override
     public void ReceiveMessage(KMessage msg) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch (msg.getType()) {
+            // Nhận yêu cầu chơi 
+            case 41: {
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog(this, "Sẵn sàng chơi?", "Title on Box", dialogButton);
+                if (dialogResult == 0) {
+                    listenServer.SendMessage(44, null);// Gửi chấp nhận
+                } else {
+                    listenServer.SendMessage(45, null);// Gửi từ chối 
+                }
+                break;
+            }
+            // Người chơi đồng ý và nhận dự liệu
+            case 46: {
+                questions = msg.getQuestions();// Nhận câu hỏi
+                setQuestion();
+                break;
+            }
+            // Người chơi không đồng ý
+            case 47: {
+                JOptionPane.showMessageDialog(null, "Người chơi không đồng ý!", "Message", 1);
+                break;
+            }
+            case 60: {
+                game2 = (Game) msg.getObject();
+                String t = "Hòa";
+                JOptionPane.showMessageDialog(null, "Hòa!", "Message", 1);
+                this.setVisible(false);
+                ResultForm resultForm = new ResultForm(listenServer, game2, t);
+                resultForm.setVisible(true);
+                break;
+            }
+            // Thông báo thắng
+            case 61: {
+                game2 = (Game) msg.getObject();
+                JOptionPane.showMessageDialog(null, "Thắng!", "Message", 1);
+                String t = "Thắng";
+                this.setVisible(false);
+                ResultForm resultForm = new ResultForm(listenServer, game2, t);
+                resultForm.setVisible(true);
+                break;
+            }
+            // Thông báo thua
+            case 62: {
+                game2 = (Game) msg.getObject();
+                String t = "Thua";
+                JOptionPane.showMessageDialog(null, "Thua!", "Message", 1);
+                this.setVisible(false);
+                ResultForm resultForm = new ResultForm(listenServer, game2, t);
+                resultForm.setVisible(true);
+                break;
+            }
+            // Thông báo người chơi thoát khỏi phòng và out phòng
+            case 71: {
+                JOptionPane.showMessageDialog(null, "Nguoi choi da thoat khoi phong!", "Message", 1);
+                this.setVisible(false);
+                HomeForm homeForm = new HomeForm(listenServer);
+                homeForm.setVisible(true);
+                break;
+            }
+            case 100: {
+                JOptionPane.showMessageDialog(null, "Đối thủ chưa hoàn thành trận đấu!", "Message", 1);
+                break;
+            }
+        }
+    }
+    private void setQuestion() {
+        //lấy câu hỏi
+        lbQues1.setText(questions.get(0).getQuestion());
+        lbQues2.setText(questions.get(1).getQuestion());
+        lbQues3.setText(questions.get(2).getQuestion());
+        lbQues4.setText(questions.get(3).getQuestion());
+        lbQues5.setText(questions.get(4).getQuestion());
+        //lấy đáp án
+        cbAns1.addItem(questions.get(0).getAnswerA());
+        cbAns1.addItem(questions.get(0).getAnswerB());
+        cbAns1.addItem(questions.get(0).getAnswerC());
+        cbAns1.addItem(questions.get(0).getAnswerD());
+        
+        cbAns2.addItem(questions.get(1).getAnswerA());
+        cbAns2.addItem(questions.get(1).getAnswerB());
+        cbAns2.addItem(questions.get(1).getAnswerC());
+        cbAns2.addItem(questions.get(1).getAnswerD());
+        
+        cbAns3.addItem(questions.get(2).getAnswerA());
+        cbAns3.addItem(questions.get(2).getAnswerB());
+        cbAns3.addItem(questions.get(2).getAnswerC());
+        cbAns3.addItem(questions.get(2).getAnswerD());
+        
+        cbAns4.addItem(questions.get(3).getAnswerA());
+        cbAns4.addItem(questions.get(3).getAnswerB());
+        cbAns4.addItem(questions.get(3).getAnswerC());
+        cbAns4.addItem(questions.get(3).getAnswerD());
+        
+        cbAns5.addItem(questions.get(4).getAnswerA());
+        cbAns5.addItem(questions.get(4).getAnswerB());
+        cbAns5.addItem(questions.get(4).getAnswerC());
+        cbAns5.addItem(questions.get(4).getAnswerD());
+        
+    }
+    private void result(int dem, LocalTime time) {
+        jLabel1.setText("Số câu đúng: " + dem);
+        game = new Game(dem, time, user);
+        try {
+            listenServer.SendMessage(50, game);
+        } catch (IOException ex) {
+            Logger.getLogger(PlayForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
