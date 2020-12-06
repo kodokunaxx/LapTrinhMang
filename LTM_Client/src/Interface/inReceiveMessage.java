@@ -9,6 +9,7 @@ import java.io.IOException;
 
 /**
  *
+ * @author admin
  */
 public interface inReceiveMessage {
     

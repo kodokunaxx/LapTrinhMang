@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * 
+ * @author admin
  */
 public class LoginForm extends javax.swing.JFrame implements inReceiveMessage{
     

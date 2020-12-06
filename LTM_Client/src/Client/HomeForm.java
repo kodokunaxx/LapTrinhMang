@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author DUONGNV
+ * @author admin
  */
 public class HomeForm extends javax.swing.JFrame implements inReceiveMessage {
 
